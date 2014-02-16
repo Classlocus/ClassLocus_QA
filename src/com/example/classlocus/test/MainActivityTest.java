@@ -30,8 +30,6 @@ public class MainActivityTest extends
 		mActivity = this.getActivity();
 		mFragment = mActivity.getFragmentManager();
 		googleMap = (Fragment) mFragment.findFragmentById(com.example.classlocus.R.id.map);
-		while (mActivity.testMenu == null);
-		menu = mActivity.testMenu;
 		while (menu.findItem(R.id.search).getActionView() == null);
 		sv = (SearchView) menu.findItem(R.id.search).getActionView();
 	}
