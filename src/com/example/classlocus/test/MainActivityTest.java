@@ -26,8 +26,10 @@ public class MainActivityTest extends
 	protected void setUp() throws Exception {
 		super.setUp();
 		mActivity = this.getActivity();
-		mFragment = mActivity.getFragmentManager();
-		googleMap = (Fragment) mFragment.findFragmentById(com.example.classlocus.R.id.map);
+		//mFragment = mActivity.getFragmentManager();
+		//googleMap = (Fragment) mFragment.findFragmentById(com.example.classlocus.R.id.map);
+		//while (menu.findItem(R.id.action_search).getActionView() == null);
+		//sv = (SearchView) menu.findItem(R.id.action_search).getActionView();
 	}
 	
 	public void testPreconditions() {
