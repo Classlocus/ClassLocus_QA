@@ -4,6 +4,7 @@ import android.widget.TextView;
 
 import com.example.classlocus.BuildingDetail;
 import com.example.classlocus.R;
+import com.google.android.gms.maps.model.LatLng;
 
 public class buildingDetailsTest extends ActivityInstrumentationTestCase2<BuildingDetail> {
 
@@ -38,5 +39,24 @@ public class buildingDetailsTest extends ActivityInstrumentationTestCase2<Buildi
 		assertEquals(bName.getText(), "KEC");
 		assertEquals(bDetails.getText(), "KEC");
 	}
+	
+	public final void testDistanceClose(){
+		//Distance from the intersection near weatherford to that same location
+		String testString = activity.buildingDistance(new LatLng(Double.parseDouble("44.564591"), 
+				Double.parseDouble("-123.279995")), 
+				new LatLng(Double.parseDouble("44.564591"), 
+						Double.parseDouble("-123.279995")));
+		assertEquals(testString, testString, "0.0m");
+	}
 
+	public final void testDistanceFar(){
+		//distance between the intersection near weatherford and the intersection near Kerr
+		//1.5hrs and counting! starting again at 1:17PM
+		String testString = activity.buildingDistance(
+				new LatLng(Double.parseDouble("44.564591"), Double.parseDouble("-123.279995")),
+				new LatLng(Double.parseDouble("44.564576"), Double.parseDouble("-123.274029")));
+		testString = testString.substring(0, testString.indexOf('.'));
+		assertEquals(testString, String.valueOf(testString.charAt(0)), "4");
+	}
+	
 }

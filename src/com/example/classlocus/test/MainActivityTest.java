@@ -17,8 +17,6 @@ public class MainActivityTest extends
 	private MainActivity mActivity;
 	private FragmentManager mFragment;
 	private Fragment googleMap;
-	private Menu menu;
-	private SearchView sv;
 	
 	public MainActivityTest() {
 	      super(MainActivity.class);
@@ -30,10 +28,6 @@ public class MainActivityTest extends
 		mActivity = this.getActivity();
 		mFragment = mActivity.getFragmentManager();
 		googleMap = (Fragment) mFragment.findFragmentById(com.example.classlocus.R.id.map);
-		while (mActivity.testMenu == null);
-		menu = mActivity.testMenu;
-		while (menu.findItem(R.id.search).getActionView() == null);
-		sv = (SearchView) menu.findItem(R.id.search).getActionView();
 	}
 	
 	public void testPreconditions() {
@@ -47,15 +41,13 @@ public class MainActivityTest extends
 	}
 	
 	public void testJunkSearch(){
-		sv.setIconified(false);
-		sv.setQuery("Not a room", true);
+		//search_function("Not a room");
 		//TODO find out what exactly is supposed to happen when I make a search.
 		fail("Where to recieve search results?");
 	}
 	
 	public void testRealSearch(){
-		sv.setIconified(false);
-		sv.setQuery("KEC 3065", true);
+		//Search_function("KEC 3065");
 		//TODO find out what exactly is supposed to happen when I make a search.
 		fail("Where to recieve search results?");
 	}
