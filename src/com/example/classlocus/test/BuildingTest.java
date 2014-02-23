@@ -1,9 +1,7 @@
 package com.example.classlocus.test;
 
 import com.example.classlocus.data.Building;
-
 import android.test.AndroidTestCase;
-//import junit.framework.TestCase;
 
 public class BuildingTest extends AndroidTestCase {
 
