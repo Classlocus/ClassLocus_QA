@@ -5,7 +5,7 @@ import com.example.classlocus.data.Building;
 import android.test.AndroidTestCase;
 //import junit.framework.TestCase;
 
-public class DataTest extends AndroidTestCase {
+public class BuildingTest extends AndroidTestCase {
 
 	Building b;
 	
