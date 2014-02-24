@@ -1,7 +1,9 @@
 package com.example.classlocus.test;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.SearchView;
 
@@ -10,6 +12,9 @@ import com.example.classlocus.R;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.Instrumentation;
+import android.app.SearchManager;
+import android.content.Context;
 
 public class MainActivityTest extends
 		ActivityInstrumentationTestCase2<MainActivity> {
@@ -17,40 +22,45 @@ public class MainActivityTest extends
 	private MainActivity mActivity;
 	private FragmentManager mFragment;
 	private Fragment googleMap;
-	
+
 	public MainActivityTest() {
-	      super(MainActivity.class);
-	    }
-	
+		super(MainActivity.class);
+	}
+
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 		mActivity = this.getActivity();
-		//mFragment = mActivity.getFragmentManager();
-		//googleMap = (Fragment) mFragment.findFragmentById(com.example.classlocus.R.id.map);
-		//while (menu.findItem(R.id.action_search).getActionView() == null);
-		//sv = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		mFragment = mActivity.getFragmentManager();
+		googleMap = (Fragment) mFragment
+				.findFragmentById(com.example.classlocus.R.id.map);
 	}
-	
-	public void testPreconditions() {
+
+	public void testPreconditions() throws Exception {
 		assertNotNull(mActivity);
 		assertNotNull(googleMap);
 	}
-	
-	public void testMapAppears(){
+
+	public void testMapAppears() {
+		
 		View map = mActivity.findViewById(R.id.map);
 		assertNotNull(map);
 	}
 	
-	public void testJunkSearch(){
-		//search_function("Not a room");
-		//TODO find out what exactly is supposed to happen when I make a search.
-		fail("Where to recieve search results?");
+	public void testSearchBarAppears() {
+		
+		SearchView searchBar = (SearchView) mActivity.findViewById(R.id.action_search);
+		assertNotNull(searchBar);
 	}
 	
-	public void testRealSearch(){
-		//Search_function("KEC 3065");
-		//TODO find out what exactly is supposed to happen when I make a search.
-		fail("Where to recieve search results?");
+	/*
+	 * USE IN TEST FOR SEARCH RESULTS?
+	 * 
+	public void testSearchBar() {
+		
+		SearchView searchBar = (SearchView) mActivity.findViewById(R.id.action_search);
+		searchBar.setQuery("KEC", true);
 	}
+	*/
+
 }
