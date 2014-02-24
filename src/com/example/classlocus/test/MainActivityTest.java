@@ -7,7 +7,7 @@ import android.widget.SearchView;
 
 import com.example.classlocus.MainActivity;
 import com.example.classlocus.R;
-import com.example.classlocus.search.SearchResultsActivity;
+import com.example.classlocus.SearchResultsActivity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
