@@ -4,6 +4,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
 
@@ -22,7 +23,8 @@ public class MainActivityTest extends
 	private MainActivity mActivity;
 	private FragmentManager mFragment;
 	private Fragment googleMap;
-
+	private MenuItem mItem;
+	
 	public MainActivityTest() {
 		super(MainActivity.class);
 	}
@@ -47,11 +49,18 @@ public class MainActivityTest extends
 		assertNotNull(map);
 	}
 	
+	public void testMenuItemClearHistory() {
+		getInstrumentation().invokeMenuActionSync(mActivity, com.example.classlocus.R.id.clear_history, 0);
+		fail("this doesn't do anything yet");
+		
+	}
+	
 	public void testSearchBarAppears() {
 		
 		SearchView searchBar = (SearchView) mActivity.findViewById(R.id.action_search);
 		assertNotNull(searchBar);
 	}
+	
 	
 	/*
 	 * USE IN TEST FOR SEARCH RESULTS?
