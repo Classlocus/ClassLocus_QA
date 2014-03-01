@@ -23,8 +23,8 @@ public class MainActivityTest extends
 	private MainActivity mActivity;
 	private FragmentManager mFragment;
 	private Fragment googleMap;
-	private MenuItem mItem;
-	
+	//private MenuItem mItem;
+
 	public MainActivityTest() {
 		super(MainActivity.class);
 	}
@@ -44,32 +44,49 @@ public class MainActivityTest extends
 	}
 
 	public void testMapAppears() {
-		
+
 		View map = mActivity.findViewById(R.id.map);
 		assertNotNull(map);
 	}
 	
-	public void testMenuItemClearHistory() {
-		getInstrumentation().invokeMenuActionSync(mActivity, com.example.classlocus.R.id.clear_history, 0);
-		fail("this doesn't do anything yet");
-		
-	}
-	
 	public void testSearchBarAppears() {
-		
-		SearchView searchBar = (SearchView) mActivity.findViewById(R.id.action_search);
+
+		SearchView searchBar = (SearchView) mActivity
+				.findViewById(R.id.action_search);
 		assertNotNull(searchBar);
 	}
+
+	public void testMenuItemClearHistory() {
+		//invokeMenuActionSync returns whether the invokation is successful
+		getInstrumentation().invokeMenuActionSync(mActivity,
+				com.example.classlocus.R.id.clear_history, 0);
+		fail("this doesn't do anything yet");
+	}
+
+	public void testMenuItemBuildingDetail() {
+		getInstrumentation().invokeMenuActionSync(mActivity,
+				com.example.classlocus.R.id.building_detail, 0);
+	}
 	
+	public void testMenuItemHelp() {
+		getInstrumentation().invokeMenuActionSync(mActivity,
+				com.example.classlocus.R.id.help, 0);
+		fail("this doesn't do anything yet");
+	}
 	
+	public void testMenuItemSettings() {
+		getInstrumentation().invokeMenuActionSync(mActivity,
+				com.example.classlocus.R.id.settings, 0);
+	}
+
 	/*
 	 * USE IN TEST FOR SEARCH RESULTS?
 	 * 
-	public void testSearchBar() {
-		
-		SearchView searchBar = (SearchView) mActivity.findViewById(R.id.action_search);
-		searchBar.setQuery("KEC", true);
-	}
-	*/
+	 * public void testSearchBar() {
+	 * 
+	 * SearchView searchBar = (SearchView)
+	 * mActivity.findViewById(R.id.action_search); searchBar.setQuery("KEC",
+	 * true); }
+	 */
 
 }
