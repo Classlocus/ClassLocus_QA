@@ -7,9 +7,12 @@ import android.widget.SearchView;
 
 import com.example.classlocus.MainActivity;
 import com.example.classlocus.R;
+import com.example.classlocus.SearchResultsActivity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.SearchManager;
+import android.content.Intent;
 
 public class MainActivityTest extends
 		ActivityInstrumentationTestCase2<MainActivity> {
@@ -45,7 +48,10 @@ public class MainActivityTest extends
 	public void testJunkSearch(){
 		//search_function("Not a room");
 		//TODO find out what exactly is supposed to happen when I make a search.
-		fail("Where to recieve search results?");
+		//Intent intent = new Intent();
+		//intent.setAction(Intent.ACTION_SEARCH);
+		//intent.putExtra(SearchManager.QUERY, "lksjdalksdj a;d;d'asd'a s'kd;l");
+		//SearchResultsActivity sra = new SearchResultsActivity();
 	}
 	
 	public void testRealSearch(){

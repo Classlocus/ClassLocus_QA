@@ -1,9 +1,7 @@
 package com.example.classlocus.test;
 
 import com.example.classlocus.data.Building;
-
 import android.test.AndroidTestCase;
-//import junit.framework.TestCase;
 
 public class BuildingTest extends AndroidTestCase {
 
@@ -41,13 +39,6 @@ public class BuildingTest extends AndroidTestCase {
 		b.setLatLng(latitude, longitude);
 		assertEquals(latlng[0], b.getLatLng()[0]);
 		assertEquals(latlng[1], b.getLatLng()[1]);
-	}
-	
-	public void testBuildingId(){
-		long buildingId = 14;
-		b.setBuildingId(buildingId);
-		
-		assertEquals(buildingId, b.getBuildingId());
 	}
 	
 	public void testParentId(){
