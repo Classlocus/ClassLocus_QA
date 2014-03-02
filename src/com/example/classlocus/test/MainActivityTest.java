@@ -1,24 +1,24 @@
 package com.example.classlocus.test;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.view.Menu;
+//import android.view.Menu;
 import android.view.View;
-import android.widget.SearchView;
+//import android.widget.SearchView;
 
 import com.example.classlocus.MainActivity;
 import com.example.classlocus.R;
-import com.example.classlocus.SearchResultsActivity;
+//import com.example.classlocus.SearchResultsActivity;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.SearchManager;
-import android.content.Intent;
+//import android.app.FragmentManager;
+//import android.app.SearchManager;
+//import android.content.Intent;
 
 public class MainActivityTest extends
 		ActivityInstrumentationTestCase2<MainActivity> {
 
 	private MainActivity mActivity;
-	private FragmentManager mFragment;
+	//private FragmentManager mFragment;
 	private Fragment googleMap;
 	
 	public MainActivityTest() {
