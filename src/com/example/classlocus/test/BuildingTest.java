@@ -41,13 +41,6 @@ public class BuildingTest extends AndroidTestCase {
 		assertEquals(latlng[1], b.getLatLng()[1]);
 	}
 	
-	public void testBuildingId(){
-		long buildingId = 14;
-		b.setBuildingId(buildingId);
-		
-		assertEquals(buildingId, b.getBuildingId());
-	}
-	
 	public void testParentId(){
 		long parentId = 342;
 		b.setParentId(parentId);
