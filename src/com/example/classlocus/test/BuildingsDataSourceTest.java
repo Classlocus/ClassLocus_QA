@@ -119,7 +119,7 @@ public class BuildingsDataSourceTest extends AndroidTestCase {
 	@Test
 	public void testGetAllBuildings() {
 		Building a = new Building();
-		a.setId(34);
+		a.setId(21);
 		a.setName("The Valley Library");
 		a.setAbbreviation("VLib");
 		a.setLatLng(44.5651985, -123.2759504);
@@ -135,7 +135,7 @@ public class BuildingsDataSourceTest extends AndroidTestCase {
 		b.setAccessible(true);
 		
 		Building c = new Building();
-		c.setId(34);
+		c.setId(56);
 		c.setName("Memorial Union Building");
 		c.setAbbreviation("MU");
 		c.setLatLng(44.5647739, -123.2788814);
