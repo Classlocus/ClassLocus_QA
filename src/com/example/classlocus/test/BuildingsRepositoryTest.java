@@ -28,6 +28,7 @@ public class BuildingsRepositoryTest extends AndroidTestCase {
 		super.setUp();
 		RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
 		repository = new BuildingsRepository(context);
+		repository.cleanBuilding();
 	}
 
 	protected void tearDown() throws Exception {
@@ -50,13 +51,16 @@ public class BuildingsRepositoryTest extends AndroidTestCase {
 	}
 	
 	public void testSearchBuildingsOne() {
-		long id = repository.saveBuilding(building);
-		List<Building> buildings = repository.searchBuilding(id);
+		// eventually when DatabasHelper.read() function works, searchBuilding should use id
+		//long id = repository.saveBuilding(building);
+				
+		repository.saveBuilding(building);
+		List<Building> buildings = repository.searchBuilding(building.getName());
 		assertEquals(1, buildings.size());
 		assertEquals(building, buildings.get(0));
 	}
 	
-	public void testGetBuildingMany() {
+	public void testSearchBuildingsMany() {
 		Building a = new Building();
 		a.setId(21);
 		a.setName("The Valley Library Center");
