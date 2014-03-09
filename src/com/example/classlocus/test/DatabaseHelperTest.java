@@ -40,7 +40,7 @@ public class DatabaseHelperTest extends AndroidTestCase {
 		long id = dbHelper.insert("Waldorf Astoria Building", "WAL", latLng, 10, false);
 		
 		Cursor cursor = dbHelper.read(id);
-		assertEquals(0, cursor.getCount());
+		assertEquals(1, cursor.getCount());
 		// should be expecting 1 when read() function is fixed
 	}
 	
@@ -48,7 +48,7 @@ public class DatabaseHelperTest extends AndroidTestCase {
 		double[] latLng = {10.101010, -20.202020};
 		long id = dbHelper.insert("Waldorf Astoria Building", "WAL", latLng, 10, false);
 		
-		dbHelper.remove("Waldorf Astoria Building");
+		dbHelper.remove(id);
 		Cursor cursor = dbHelper.read(id);
 		assertEquals(0, cursor.getCount());
 	}
