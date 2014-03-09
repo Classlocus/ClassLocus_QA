@@ -36,18 +36,6 @@ public class BuildingDetailsTest extends ActivityInstrumentationTestCase2<Buildi
 		assertNotNull(activity.findViewById(R.id.detail_building_value));
 	}
 	
-	public final void testBuildingDetails() {
-		fail("There is not any procedure to input data into the page yet");
-		//put data into the views.
-		TextView bName = (TextView) activity.findViewById(R.id.detail_building_name);
-		TextView bDetails = (TextView) activity.findViewById(R.id.detail_building_value);
-		assertNotNull(bName);
-		assertNotNull(bDetails);
-		//TODO Fill these to match dummy data.
-		assertEquals(bName.getText(), "KEC");
-		assertEquals(bDetails.getText(), "KEC");
-	}
-	
 	public void testBuildingPopulate() {
 		repository = new BuildingsRepository(activity);
 		building = new Building();
@@ -60,11 +48,10 @@ public class BuildingDetailsTest extends ActivityInstrumentationTestCase2<Buildi
 		building.setLatLng(23.45, 34.56);
 		
 		repository.saveBuilding(building);
-		bdlist.add(repository.searchBuilding("Kelley").get(0));
+		bdlist.add(0, repository.searchBuilding("Kelley").get(0));
 		bid = bdlist.get(0).getId();
 		search.putExtra("buildingID", bid);
-		bdlist.add(activity.populate(search, repository));
-		
+		bdlist.add(1, activity.populate(search, repository));
+		assertTrue(bdlist.get(0).equals(bdlist.get(1)));
 	}
-
 }
