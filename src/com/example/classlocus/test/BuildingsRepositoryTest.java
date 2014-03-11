@@ -11,17 +11,43 @@ import com.example.classlocus.data.BuildingsRepository;
 public class BuildingsRepositoryTest extends AndroidTestCase {
 
 	private BuildingsRepository repository;
-	private Building building;
+	private Building bld_a;
+	private Building bld_b;
+	private Building bld_c;
+	private Building bld_d;
 	
 	public BuildingsRepositoryTest() {
-		building = new Building();
+		bld_a = new Building();
+		bld_a.setId(0);
+		bld_a.setName("Malcolm Building");
+		bld_a.setAbbreviation("MAB");
+		bld_a.setLatLng(10.1010, -141.1414);
+		bld_a.setParentId(10);
+		bld_a.setAccessible(true);
 		
-		building.setId(0);
-		building.setName("Malcolm Building");
-		building.setAbbreviation("MAB");
-		building.setLatLng(10.1010, -141.1414);
-		building.setParentId(10);
-		building.setAccessible(true);
+		bld_b = new Building();
+		bld_b.setId(0);
+		bld_b.setName("The Valley Library");
+		bld_b.setAbbreviation("VLib");
+		bld_b.setLatLng(44.5651985, -123.2759504);
+		bld_b.setParentId(10);
+		bld_b.setAccessible(true);
+		
+		bld_c = new Building();
+		bld_c.setId(0);
+		bld_c.setName("Kelley Engineering Center");
+		bld_c.setAbbreviation("KEC");
+		bld_c.setLatLng(44.5679076, -123.2783046);
+		bld_c.setParentId(10);
+		bld_c.setAccessible(true);
+		
+		bld_d = new Building();
+		bld_d.setId(0);
+		bld_d.setName("Memorial Union Building");
+		bld_d.setAbbreviation("MU");
+		bld_d.setLatLng(44.5647739, -123.2788814);
+		bld_d.setParentId(10);
+		bld_d.setAccessible(true);
 	}
 
 	protected void setUp() throws Exception {
@@ -36,65 +62,46 @@ public class BuildingsRepositoryTest extends AndroidTestCase {
 	}
 	
 	public void testSaveBuilding() {
-		long id = repository.saveBuilding(building);
-		assert(id > 0);
+		long id = repository.saveBuilding(bld_a);
+		assertTrue(id > 0);
 	}
 
 	public void testDeleteBuilding() {
-		repository.saveBuilding(building);
-		assertTrue(repository.deleteBuilding(building));
+		long id = repository.saveBuilding(bld_a);
+		bld_a.setId(id);
+		assertTrue(repository.deleteBuilding(bld_a));
 	}
 
-	public void testSearchBuildingsEmpty() {
+	public void testSearchBuildingsEmptyResult() {
+		repository.saveBuilding(bld_a);
+		repository.saveBuilding(bld_b);
+		repository.saveBuilding(bld_c);
+		repository.saveBuilding(bld_d);
+		
 		List<Building> buildings = repository.searchBuilding("Kerney"); 
 		assertEquals(0, buildings.size());
 	}
 	
-	public void testSearchBuildingsOne() {
-		// eventually when DatabasHelper.read() function works, searchBuilding should use id
-		//long id = repository.saveBuilding(building);
-				
-		repository.saveBuilding(building);
-		List<Building> buildings = repository.searchBuilding(building.getName());
-		assertEquals(1, buildings.size());
-		assertEquals(building, buildings.get(0));
+	public void testSearchBuildingsByName() {
+		repository.saveBuilding(bld_a);
+		repository.saveBuilding(bld_b);
+		repository.saveBuilding(bld_c);
+		repository.saveBuilding(bld_d);
+		
+		List<Building> buildings = repository.searchBuilding("Building");
+		assertEquals(2, buildings.size());
+		assertFalse(buildings.contains(bld_c));
 	}
 	
-	public void testSearchBuildingsMany() {
-		Building a = new Building();
-		a.setId(21);
-		a.setName("The Valley Library Center");
-		a.setAbbreviation("VLib");
-		a.setLatLng(44.5651985, -123.2759504);
-		a.setParentId(10);
-		a.setAccessible(true);
+	public void testSearchBuildingsByAbbreviation() {
+		repository.saveBuilding(bld_a);
+		repository.saveBuilding(bld_b);
+		repository.saveBuilding(bld_c);
+		repository.saveBuilding(bld_d);
 		
-		Building b = new Building();
-		b.setId(34);
-		b.setName("Kelley Engineering Center");
-		b.setAbbreviation("KEC");
-		b.setLatLng(44.5679076, -123.2783046);
-		b.setParentId(10);
-		b.setAccessible(true);
-		
-		Building c = new Building();
-		c.setId(56);
-		c.setName("Memorial Union Center");
-		c.setAbbreviation("MU");
-		c.setLatLng(44.5647739, -123.2788814);
-		c.setParentId(10);
-		c.setAccessible(true);
-		
-		repository.saveBuilding(a);
-		repository.saveBuilding(b);
-		repository.saveBuilding(c);
-		
-		List<Building> buildings = repository.searchBuilding("Center");
-		assertEquals(3, buildings.size());
-		
-		assert(buildings.contains(a));
-		assert(buildings.contains(b));
-		assert(buildings.contains(c));
+		List<Building> buildings = repository.searchBuilding("KEC");
+		assertEquals(1, buildings.size());
+		assertTrue(buildings.contains(bld_c));
 	}
 
 }
