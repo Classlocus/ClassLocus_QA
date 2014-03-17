@@ -54,7 +54,7 @@ public class BuildingsRepositoryTest extends AndroidTestCase {
 		super.setUp();
 		RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
 		repository = new BuildingsRepository(context);
-		repository.cleanBuilding();
+		repository.cleanRepository();
 	}
 
 	protected void tearDown() throws Exception {
